@@ -1,0 +1,70 @@
+/* Para ocupar a tela inteira */
+.container-fluid {
+    padding: 0;
+}
+
+.container-fluid .row {
+    margin: 0;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Navbar */
+
+/* coloca border abaixo no navbar, e estabelece margem para o que vem abaixo */
+.navbar  {
+    border-bottom: 1px solid blue;
+    margin-bottom: 25px;
+}
+
+/* centraliza o navbar */
+.navbar-nav {
+    margin-left: 170px;
+}
+/* coloca bold no botão principal (brand) */
+.navbar-brand {
+    font-family: 'Pacifico', cursive;
+    font-size: 27px;
+}
+/* coloca cor e espaçamento das letras nas opções do navbar */
+.navbar-light .navbar-nav a.nav-link {
+    color: blue;
+    letter-spacing: 0px;
+    font-size: 17px;
+    font-weight: bold;
+    margin-left: 55px;
+    text-transform: uppercase;
+}
+
+/* Lista Filmes */
+
+.listafilmes-div h3 {
+    font-size: 18px;
+    margin-left: 0px;
+    margin-top: 8px;
+    width: 250px;
+}
+
+.lista-filmes {
+    margin-left: 20px;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.lista-filmes td {
+    font-size: 15px;
+}
+
+/* filter ano*/
+.filterano-div {
+    margin-left: 300px;
+}
+
+#filterano {
+    display: inline-block;
+    width: 100px;
+    margin-left: 0px;
+}

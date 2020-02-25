@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block title %}Filmes API{% endblock %}
+{% load humanize %}
+
+{% block content %}
+<div class="offset-0 col-11 listafilmes-div">
+    <div class="flex-container">
+        <form method="GET" id="searchano-form">
+            <label for="ano">Ano:</label>
+            <input type="text" class="form-control" id="ano" name="ano">
+        </form>
+        <button type="submit" id="btn-ano" class="btn btn-primary">Busca Filmes</button>
+    </div>
+    {% if qtdefilmes == 0 %}
+        <p>Ano Não Encontrado !!</p>
+    {% else %}
+        <h3># Filmes: {{qtdefilmes}}</h3>
+    {% endif %}
+    <div class="container lista-filmes">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nome do Filme</th>
+                <th>Ano</th>
+                <th class="text-center">Mes</th>
+                <th class="text-center">Genero</th>
+                <th class="text-center">Tipo</th>
+                <th class="text-right">Receita</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for filme in listafilmes %}
+            <tr>
+                <td><span><a href="/filme/{{filme.id}}">{{filme.nome}}</a></span></td>
+                <td>{{filme.ano}}</td>
+                <td class="text-center">{{filme.mes}}</td>
+                <td class="text-center">{{filme.genero}}</td>
+                <td class="text-center">{{filme.tipo}}</td>
+                <td class="text-right">{{filme.receita | intcomma}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

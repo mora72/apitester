@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block title %}CEP API{% endblock %}
+
+
+{% block content %}
+<div class="offset-4 col-5 mainpage-div">
+    <form method="GET" id="searchcep-form">
+        <label for="cep">CEP:</label>
+        <input type="text" class="form-control" id="cep" name="cep">
+    </form>
+    <button type="submit" id="btn-cep" class="btn btn-primary">Busca CEP</button>
+    {% if resultado.erro %}
+        <p>CEP Não Encontrado !!</p>
+    {% else %}
+        {% if resultado %}
+        <ul class="resultado">
+            <li>Logradouro: {{resultado.logradouro}}</li>
+            <li>Complemento: {{resultado.complemento}}</li>
+            <li>Bairro: {{resultado.bairro}}</li>
+            <li>Localidade: {{resultado.localidade}}</li>
+            <li>Estado: {{resultado.uf}}</li>
+        </ul>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}

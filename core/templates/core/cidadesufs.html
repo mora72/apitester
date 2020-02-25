@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block title %}Cidades/UFs API{% endblock %}
+
+
+{% block content %}
+<div class="offset-0 col-11 buscacidades-div">
+    <h2>Busca Cidades e Estados </h2>
+    <div class="flex-container">
+        <!-- Configuração da ação do filtro UF -->
+        <div class="col-5 column filteruf-div">
+            <span>Filtrar Estado:</span>
+            <select name="filteruf" id="filteruf" class="form-control">
+                <option value="0">Todos</option>
+                {% for uf in listaufs %}
+                    {% if ufatual.id == uf.id %}
+                        <option value="{{ uf.id }}" selected>{{ uf.nome }}</option>
+                    {% else %}
+                        <option value="{{ uf.id }}">{{ uf.nome }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <!-- Configuração da ação do filtro Cidade -->
+        <div class="col-4 filtercidades-div">
+            <span>Filtrar Cidades:</span>
+            <select name="filtercidade" id="filtercidade" class="form-control">
+                <option value="0">Todas</option>
+                {% for cidade in listacidadesfiltro %}
+                    {% if filtercidadeatual == cidade.id %}
+                        <option value="{{ cidade.id }}" selected>{{ cidade.nome }}</option>
+                    {% else %}
+                        <option value="{{ cidade.id }}">{{ cidade.nome }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <p>Estado: {{ufatual.nome}} </p>
+    <p>Região: {{ufatual.regiao.nome}} </p>
+    <div class="container lista-cidade">
+        <table class="table table-cidades">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>MicroRegião</th>
+                <th>MesoRegião</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for cidade in listacidadesdetalhe %}
+            <tr>
+                <td>{{cidade.nome}}</td>
+                <td>{{cidade.microrregiao.nome}}</td>
+                <td>{{cidade.microrregiao.mesorregiao.nome}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>{% endblock %}
