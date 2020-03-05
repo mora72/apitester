@@ -6,16 +6,27 @@
 {% block content %}
 <div class="offset-0 col-11 listafilmes-div">
     <div class="flex-container">
-        <form method="GET" id="searchano-form">
-            <label for="ano">Ano:</label>
-            <input type="text" class="form-control" id="ano" name="ano">
+        <form role="form" method="GET" class="form-inline" id="searchano-form">
+            <div class="form-group searchano-div">
+                <label for="ano">Ano:</label>
+                {% if anoatual %}
+                    <input type="text" class="form-control" id="ano" name="ano" value={{anoatual}}>
+                {% else %}
+                    <input type="text" class="form-control" id="ano" name="ano">
+                {% endif %}
+                <button type="submit" id="btn-ano" class="btn btn-primary">Busca Filmes</button>
+            </div>
         </form>
-        <button type="submit" id="btn-ano" class="btn btn-primary">Busca Filmes</button>
     </div>
-    {% if qtdefilmes == 0 %}
-        <p>Ano Não Encontrado !!</p>
-    {% else %}
-        <h3># Filmes: {{qtdefilmes}}</h3>
+    {% if anoatual %}
+        {% if qtdefilmes == 0 %}
+            <div class="alert alert-danger alert-dismissable alert-ano">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <strong>Atenção! </strong> Nenhum filme encontrado neste ano !
+            </div>
+        {% else %}
+            <h3># Filmes: {{qtdefilmes}}</h3>
+        {% endif %}
     {% endif %}
     <div class="container lista-filmes">
         <table class="table">

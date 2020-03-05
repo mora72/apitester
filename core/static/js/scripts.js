@@ -22,9 +22,9 @@ $( document ).ready(function() {
     });
 
     // Ação do botão busca ano (click)
-        var Btnano = $('#btn-ano');
-        var searchForm = $('#searchano-form');
-        $(Btnano).on('click', function() {
-            searchForm.submit();
-        });
+    //    var Btnano = $('#btn-ano');
+    //    var searchForm = $('#searchano-form');
+    //    $(Btnano).on('click', function() {
+    //        searchForm.submit();
+    //    });
 });

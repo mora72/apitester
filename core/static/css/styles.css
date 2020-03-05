@@ -17,7 +17,7 @@
 /* coloca border abaixo no navbar, e estabelece margem para o que vem abaixo */
 .navbar  {
     border-bottom: 1px solid blue;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 /* centraliza o navbar */
@@ -39,19 +39,33 @@
     text-transform: uppercase;
 }
 
-/* Lista Filmes */
-
-.listafilmes-div h3 {
-    font-size: 18px;
-    margin-left: 0px;
-    margin-top: 8px;
-    width: 250px;
+/* Estados e Cidades */
+.filteruf-div {
+    margin-left: 280px;
 }
+
+.table-cidades {
+    margin-left: 20px;
+}
+
+.nomeregiao-div {
+    margin-top: 30px;
+    margin-left: 235px;
+    margin-bottom: 30px;
+}
+
+/* Lista Filmes */
 
 .lista-filmes {
     margin-left: 20px;
     padding: 0;
-    margin-top: 10px;
+    margin-top: 20px;
+}
+
+.listafilmes-div h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 20px;
 }
 
 .lista-filmes td {
@@ -59,12 +73,28 @@
 }
 
 /* filter ano*/
-.filterano-div {
-    margin-left: 300px;
+.searchano-div {
+    margin-left: 410px;
+    margin-top: 15px;
 }
 
-#filterano {
-    display: inline-block;
-    width: 100px;
-    margin-left: 0px;
+#ano {
+    width: 80px;
+    margin-left: 10px;
+}
+
+#btn-ano {
+    margin-left: 35px;
+}
+
+.alert-ano {
+    margin-left: 35px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+#btn-cep {
+    margin-top: 10px;
+    margin-left: 80px;
+    margin-bottom: 10px;
 }

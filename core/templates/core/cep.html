@@ -2,26 +2,65 @@
 {% extends 'base.html' %}
 {% block title %}CEP API{% endblock %}
 
-
 {% block content %}
-<div class="offset-4 col-5 mainpage-div">
+<div class="offset-4 col-3 mainpage-div">
     <form method="GET" id="searchcep-form">
-        <label for="cep">CEP:</label>
-        <input type="text" class="form-control" id="cep" name="cep">
+        <input type="text" class="form-control" id="cep" name="cep" placeholder="Digite o CEP para buscar...">
+        <button type="submit" id="btn-cep" class="btn btn-primary">Busca CEP</button>
     </form>
-    <button type="submit" id="btn-cep" class="btn btn-primary">Busca CEP</button>
-    {% if resultado.erro %}
-        <p>CEP Não Encontrado !!</p>
-    {% else %}
-        {% if resultado %}
-        <ul class="resultado">
-            <li>Logradouro: {{resultado.logradouro}}</li>
-            <li>Complemento: {{resultado.complemento}}</li>
-            <li>Bairro: {{resultado.bairro}}</li>
-            <li>Localidade: {{resultado.localidade}}</li>
-            <li>Estado: {{resultado.uf}}</li>
-        </ul>
-        {% endif %}
-    {% endif %}
 </div>
+{% if resultado.erro%}
+<div class="container-fluid">
+    <div class="row">
+        <div class="offset-3 col-md-5">
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <strong>Atenção! </strong> Este CEP não foi encontrado na base dos correios
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+{% if resultado %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="offset-3 col-md-5">
+            <div class="card">
+                <h5 class="card-header">
+                    Resultado API CEP
+                </h5>
+                <div class="card-body">
+                    <div class="offset-1 col-md-11">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="logradouro"><strong>Logradouro: </strong></label>
+                                <input type="text" class="form-control" id="logradouro" value="{{resultado.logradouro}}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="complemento"><strong>Complemento: </strong></label>
+                                <input type="text" class="form-control" id="complemento" value="{{resultado.complemento}}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="bairro"><strong>Bairro: </strong></label>
+                                <input type="text" class="form-control" id="bairro" value="{{resultado.bairro}}"/>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="localidade"><strong>Cidade: </strong></label>
+                                    <input type="text" class="form-control" id="localidade" value="{{resultado.localidade}}"/>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="estado"><strong>Estado: </strong></label>
+                                    <input type="text" class="form-control" id="estado" value="{{resultado.uf}}"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endif %}
 {% endblock %}

@@ -10,9 +10,11 @@ def cep(request):
     cepid = request.GET.get('cep')
     res = {}
     if cepid:
-        res = requests.get(f'https://viacep.com.br/ws/{cepid}/json/').json()
-        print(res)
-
+        if len(cepid) != 8:
+            res['erro'] = True
+        else:
+            res = requests.get(f'https://viacep.com.br/ws/{cepid}/json/').json()
+    print(res)
     return render(request, 'core/cep.html', {'resultado': res})
 
 
@@ -57,4 +59,5 @@ def filmes(request):
         resultado = req.json()
         qtdefilmes = len(resultado)
 
-    return render(request, 'core/filmes.html', {'listafilmes': resultado, 'qtdefilmes': qtdefilmes})
+    return render(request, 'core/filmes.html', {'listafilmes': resultado, 'qtdefilmes': qtdefilmes,
+                                                'anoatual': filterano})

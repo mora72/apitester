@@ -2,14 +2,12 @@
 {% extends 'base.html' %}
 {% block title %}Cidades/UFs API{% endblock %}
 
-
 {% block content %}
-<div class="offset-0 col-11 buscacidades-div">
-    <h2>Busca Cidades e Estados </h2>
+<div class="offset-0 col-12 buscacidades-div">
     <div class="flex-container">
         <!-- Configuração da ação do filtro UF -->
-        <div class="col-5 column filteruf-div">
-            <span>Filtrar Estado:</span>
+        <div class="col-3 column filteruf-div">
+            <strong>Filtrar Estado:</strong>
             <select name="filteruf" id="filteruf" class="form-control">
                 <option value="0">Todos</option>
                 {% for uf in listaufs %}
@@ -22,8 +20,8 @@
             </select>
         </div>
         <!-- Configuração da ação do filtro Cidade -->
-        <div class="col-4 filtercidades-div">
-            <span>Filtrar Cidades:</span>
+        <div class="col-3 filtercidades-div">
+            <strong>Filtrar Cidades:</strong>
             <select name="filtercidade" id="filtercidade" class="form-control">
                 <option value="0">Todas</option>
                 {% for cidade in listacidadesfiltro %}
@@ -36,13 +34,16 @@
             </select>
         </div>
     </div>
-    <p>Estado: {{ufatual.nome}} </p>
-    <p>Região: {{ufatual.regiao.nome}} </p>
-    <div class="container lista-cidade">
+    <div class="flex-container">
+        <div class="col-3 column nomeregiao-div">
+            <strong>Região: {{ufatual.regiao.nome}} </strong>
+        </div>
+    </div>
+    <div class="offset-2 col-7 container lista-cidade">
         <table class="table table-cidades">
             <thead>
             <tr>
-                <th>Nome</th>
+                <th>Cidade</th>
                 <th>MicroRegião</th>
                 <th>MesoRegião</th>
             </tr>
